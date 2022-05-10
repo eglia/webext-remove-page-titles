@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "name": "Remove Page Titles",
-  "version": "1.3",
+  "version": "1.4",
   "description": "Firefox web extension to remove the title of any page.",
   "permissions": [
     "<all_urls>",
