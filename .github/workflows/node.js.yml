@@ -31,6 +31,9 @@ jobs:
       uses: actions/setup-node@v3
       with:
         node-version: ${{ matrix.node-version }}
+    - run: exit 0
+    - run: exit 1
+    - run: foobar
     - run: npm install --global web-ext
     - run: web-ext build
     - run: web-ext sign --api-key=${{ secrets.FIREFOXAMOISSUER }} --api-secret=${{ secrets.FIREFOXAMOSECRET }} --id={0948dc04-cbab-42e8-8ee2-15feba5a54a2} 
