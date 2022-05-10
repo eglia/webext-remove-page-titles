@@ -8,12 +8,10 @@ on:
     branches: [ main ]
     paths: 
       - manifest.json
-      - .github/workflows/node.js.yml
   pull_request:
     branches: [ main ]
     paths:
       - manifest.json
-      - .github/workflows/node.js.yml
 
 jobs:
   build:
@@ -31,19 +29,16 @@ jobs:
       uses: actions/setup-node@v3
       with:
         node-version: ${{ matrix.node-version }}
+    - run: npm install --global web-ext
+    - run: web-ext build
     - run: |
-          if web-ext sign; then
+          if web-ext sign --api-key=${{ secrets.FIREFOXAMOISSUER }} --api-secret=${{ secrets.FIREFOXAMOSECRET }} --id={0948dc04-cbab-42e8-8ee2-15feba5a54a2}; then
             echo "::set-output name=result::true"
           else
             echo "::set-output name=result::false"
           fi
-    - run: foobar
-    - run: npm install --global web-ext
-    - run: web-ext build
-    - run: web-ext sign --api-key=${{ secrets.FIREFOXAMOISSUER }} --api-secret=${{ secrets.FIREFOXAMOSECRET }} --id={0948dc04-cbab-42e8-8ee2-15feba5a54a2} 
     - name: Archive Artifacts
       uses: actions/upload-artifact@v3
       with:
         name: web-ext-artifacts
-        path: |
-          web-ext-artifacts
+        path: web-ext-artifacts
