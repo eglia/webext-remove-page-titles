@@ -32,7 +32,7 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
     - run: exit 0
-    - run: exit 1
+    - run: exit 1; exit0
     - run: foobar
     - run: npm install --global web-ext
     - run: web-ext build
