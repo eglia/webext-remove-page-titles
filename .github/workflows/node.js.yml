@@ -26,4 +26,4 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
     - run: npm install --global web-ext
-    - run: webext build
+    - run: web-ext build
