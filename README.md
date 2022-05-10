@@ -1,4 +1,4 @@
-# Custom Tab Title and Favicon
+# Remove Page Titles
 
 _Remove Page Titles_ is a Firefox web extension that removes the titles from all webpages.
 
