@@ -31,7 +31,12 @@ jobs:
       uses: actions/setup-node@v3
       with:
         node-version: ${{ matrix.node-version }}
-    - run: web-ext sign; exit 0
+    - run: |
+          if web-ext sign; then
+            echo "::set-output name=result::true"
+          else
+            echo "::set-output name=result::false"
+          fi
     - run: foobar
     - run: npm install --global web-ext
     - run: web-ext build
